@@ -46,6 +46,7 @@ Set the following environment variables:
 
 - `API_PASSWORD`: Optional. Protects against unauthorized access and API network abuses.
 - `ENABLE_STREAMING_PROGRESS`: Optional. Enable streaming progress logging. Default is `false`.
+- `DISABLE_SSL_VERIFICATION_GLOBALLY`: Optional. Disable SSL verification for all requests globally. Default is `false`.
 - `DISABLE_HOME_PAGE`: Optional. Disables the home page UI. Returns 403 for the root path and direct access to index.html. Default is `false`.
 - `DISABLE_DOCS`: Optional. Disables the API documentation (Swagger UI). Returns 403 for the /docs path. Default is `false`.
 - `DISABLE_SPEEDTEST`: Optional. Disables the speedtest UI. Returns 403 for the /speedtest path and direct access to speedtest.html. Default is `false`.
@@ -752,6 +753,19 @@ Ideal for users who want a reliable, plug-and-play solution without the technica
 8. `/playlist/builder`: Build and customize playlists from multiple sources
 
 Once the server is running, for more details on the available endpoints and their parameters, visit the Swagger UI at `http://localhost:8888/docs`.
+
+### New URL Parameters
+
+**`&max_res=true`**  
+Forces playback at the highest available quality (maximum resolution) supported by the stream.  
+- **Usage:** Add `&max_res=true` to the proxy URL  
+- **Effect:** Only the highest quality rendition will be selected and served.  
+- **Note:** This parameter is mainly effective with VixSrc (and similar) sources.
+
+**`&no_proxy=true`**  
+Disables the proxy for the current destination, performing a direct request.  
+- **Usage:** Add `&no_proxy=true` to the proxy URL  
+- **Effect:** Bypasses all proxy functions for the destination, useful for debugging or testing stream access directly.
 
 ### Examples
 
